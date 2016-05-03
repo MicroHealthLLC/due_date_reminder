@@ -1,4 +1,4 @@
-# Due Date Reminder plugin for Redmine [![Build Status](https://travis-ci.org/f0y/due_date_reminder.png?branch=redmine-2.x)](https://travis-ci.org/f0y/due_date_reminder)
+# Due Date Reminder plugin for Redmine
 
 Plugin for Redmine project that sends notification to assignee if due date is coming.
 
@@ -12,26 +12,14 @@ Moreover, administrator can set default notification settings for new users.
 Plugin also sends info about issues behind a schedule.
 Users cannot change this behavior.
 
-http://www.redmine.org/plugins/due_date_reminder
-
-## Compatibility
-
-There are a few versions of the plugin:
-* redmine-1.3 for Redmine 1.3.x
-* redmine-1.4 for Redmine 1.4.x
-* redmine-2.x for Redmine 2.0 and higher
 
 ## Installation
 
     cd /home/user/path_to_you_app/
-    git clone git://github.com/f0y/due_date_reminder.git plugins/due_date_reminder
+    git clone https://github.com/MicroHealthLLC/due_date_reminder/
     cd plugins/due_date_reminder; git checkout <YOUR BRANCH HERE - see above>
 
-For Redmine 1.3.x and Redmine 1.4.x
-
-    bundle exec rake db:migrate_plugins RAILS_ENV=production
-
-For Redmine 2.x and higher
+For Redmine 3.x and higher
 
     bundle exec rake redmine:plugins:migrate RAILS_ENV=production
 
