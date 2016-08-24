@@ -1,16 +1,9 @@
-class NoMailConfiguration < RuntimeError;
-end
-
-
 class ReminderMailer < Mailer
   include Redmine::I18n
 
   prepend_view_path "#{Redmine::Plugin.find("due_date_reminder").directory}/app/views"
 
   def self.due_date_notifications
-    unless ActionMailer::Base.perform_deliveries
-      raise NoMailConfiguration.new(l(:text_email_delivery_not_configured))
-    end
     data = {}
     issues = self.find_issues
     issues.each { |issue| self.insert(data, issue) }
