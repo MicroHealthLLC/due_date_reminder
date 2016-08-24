@@ -49,9 +49,17 @@ class ReminderMailer < Mailer
   private
 
   def self.insert(data, issue)
+    return unless check_custom_value(issue)
     data[issue.assigned_to] ||= {}
     data[issue.assigned_to][issue.project] ||= []
     data[issue.assigned_to][issue.project] << issue
   end
 
+  def self.check_custom_value(issue)
+    return CustomValue.find_or_initialize_by(custom_field_id: id_custom_field, customized_id: issue.id).value == "1"
+  end
+
+  def self.id_custom_field
+    @id_custom_field ||= CustomField.find_by(name: "Rappel par mail").id
+  end
 end
